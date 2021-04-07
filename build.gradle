@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'kr.co.eddy.java-in-action'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.14'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.18.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}

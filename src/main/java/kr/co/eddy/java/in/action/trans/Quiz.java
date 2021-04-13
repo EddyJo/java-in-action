@@ -1,6 +1,7 @@
 package kr.co.eddy.java.in.action.trans;
 
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
@@ -57,5 +58,23 @@ public class Quiz {
         boolean quiz5 = transactionList.stream()
                                        .anyMatch(transaction -> transaction.getTrader().getCity().equals("Milan"));
         System.out.println(quiz5);
+
+        List<Transaction> quiz6 = transactionList.stream()
+                                                 .filter(transaction -> transaction.getTrader().getCity().equals("Cambridge"))
+                                                 .collect(toList());
+
+        System.out.println(quiz6);
+
+        int maxValue = transactionList.stream()
+                                      .max(comparing(Transaction::getValue))
+                                      .map(Transaction::getValue)
+                                      .get();
+
+        System.out.println(maxValue);
+
+        Optional<Integer> smallestValue = transactionList.stream().map(Transaction::getValue).reduce(Integer::min);
+        System.out.println(smallestValue);
+
+
     }
 }
